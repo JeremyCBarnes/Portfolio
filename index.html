@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> <!--Bootstrap!-->
+<style>
+	[v-cloak]{
+		display: none;
+	}
+</style>
+
+<div id="app">
+	<!-- <h1 id="greeting"></h1> //Old way-->
+	<!--<h1> {{greeting}} </h1>-->
+	<div class="container">
+		<form v-show="!submitted" class="mt-5">
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" v-model="email" class="form-control form-control-lg">
+			</div>
+			<button type="submit" @click.prevent="process" class="btn btn-primary">Submit</button>
+		</form>
+		<h2 v-show="submitted" v-cloak class="mt-5">{{signed}}</h2>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+	//document.getElementById('greeting').innerText = 'Hello, welcome to vuejs! :D' // Old way
+	//$('#greeting').text('Hello, welcome to vuejs! :D'); //vue.js way
+	// Vue Instance below
+	//new Vue({
+	//el: '#app',
+	//data:{
+	//	greeting: 'Hello, welcome to vuejs! :D',
+	//	email1: 'jeremy@example.com'
+	//}	
+	//}); Uses :value="email" for default input, aka one way data binding
+	var vm = new Vue({
+		el: '#app',
+		data:{
+			email: 'jeremy@example.com',
+			submitted: false,
+			signed: 'Thanks for signing up!'
+		},
+		methods: {
+			process: function() { // Function
+				//event.preventDefault(); //Prevents refresh
+				alert('Submitted ' + this.email);
+				this.submitted = true;
+			}
+		}
+	}); // Uses v-model="email"m aka two way data binding
+	
+</script>
