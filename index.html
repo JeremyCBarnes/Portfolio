@@ -1,53 +1,113 @@
 <!DOCTYPE html>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> <!--Bootstrap!-->
-<style>
-	[v-cloak]{
-		display: none;
+	<style>
+	.body {
+		padding-top: 500px;	
 	}
-</style>
-
-<div id="app">
-	<!-- <h1 id="greeting"></h1> //Old way-->
-	<!--<h1> {{greeting}} </h1>-->
-	<div class="container">
-		<form v-show="!submitted" class="mt-5">
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input type="email" v-model="email" class="form-control form-control-lg">
-			</div>
-			<button type="submit" @click.prevent="process" class="btn btn-primary">Submit</button>
-		</form>
-		<h2 v-show="submitted" v-cloak class="mt-5">{{signed}}</h2>
-	</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-<script>
-	//document.getElementById('greeting').innerText = 'Hello, welcome to vuejs! :D' // Old way
-	//$('#greeting').text('Hello, welcome to vuejs! :D'); //vue.js way
-	// Vue Instance below
-	//new Vue({
-	//el: '#app',
-	//data:{
-	//	greeting: 'Hello, welcome to vuejs! :D',
-	//	email1: 'jeremy@example.com'
-	//}	
-	//}); Uses :value="email" for default input, aka one way data binding
-	var vm = new Vue({
-		el: '#app',
-		data:{
-			email: 'jeremy@example.com',
-			submitted: false,
-			signed: 'Thanks for signing up!'
-		},
-		methods: {
-			process: function() { // Function
-				//event.preventDefault(); //Prevents refresh
-				alert('Submitted ' + this.email);
-				this.submitted = true;
-			}
-		}
-	}); // Uses v-model="email"m aka two way data binding
+	#backgroundbod {
+		background-color: #3A1E08;
+		text-align: center;
+       }
+	.card {
+		width: 50%;
+		height: 50%;
+		margin: 0 auto;
+        float: none;
+		margin-top: 135px;
+	}
+	#myself {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+	}
+	#icon-linkedin {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+	}
+	#icon-VT {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+	}
+	#resume {
+		background-color: #3A1E08;
+		border: none;
+		box-shadow: none;
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		padding: 10px;
+        }
+	#p1, #h1 {
+		color: #3A1E08;
+		padding-top: 25px;	
+	}
+	#p2 {
+		color: #3A1E08;
+		padding-bottom: 60px;
+		font-size: large;
+	}
+	#social{
+		position: absolute;
+		right:    0;
+		bottom:   0;
+		margin-right: 50px;
+		margin-bottom: 15px;
+	}
+	</style>
 	
-</script>
+	<html>
+		<head>
+			<base href="JeremyCoyBarnes.com">
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+			<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+		</head>
+		
+		<body id="backgroundbod">
+			<div id="app">
+				<div class="card" height="1000">
+					<h1 id="h1">{{title}}</h1>
+					<img id="myself" src="C:\Users\Crabd\Pictures\Saved Pictures\Jeremy-Barnes2126.jpg" width="200" height="200">
+					<p id="p1" style="font-size: large">{{desc}}</p>
+					<p id="p2">{{courses}}</p>
+					<div id="social">
+						<a target="_blank" rel="noopener" href="https://www.linkedin.com/in/jeremy-barnes-7a82b672/">
+						<span id="icon-linkedin" style="margin-right: 20px">
+							<img src="JeremyBarnes.github.io/linkedin6.png" width="45" height="45">
+						</span>
+						</a>
+						<a target="_blank" rel="noopener" href="https://www.varsitytutors.com/tutors/878166829">
+						<span id="icon-VT" style="margin-right: 20px">
+							<img src="JeremyBarnes.github.io/VT3.png" width="45" height="45">
+						</span>
+						</a>
+						<a target="_blank" rel="noopener" href="JeremyBarnes.github.io/Jeremy Coy Barnes.pdf" download>
+							<button id="resume" class="btn btn-primary">{{resume}}</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>
+	
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				title: 'About Jeremy Barnes',
+				desc: 'Mr. Barnes a highly skilled computer programmer with an outstanding analytical and observational expertise. Tutoring allowed him to obtain a great attitude towards learning and school. Further improved work and study habits. Exceptional techniques to overcome learning obstacles. Seeking to advance his career, expand his knowledge and take on further responsibilities with a role in an academic setting.',
+				courses: 'Tutored Coursework: College Algebra, Precalculus I and II, Calculus I, Calculus II, Logic and Philosophy, Elementary Statistics, Ordinary Differential, Abstract Algebra, Calculus III, Introductory Linear Algebra, Calculus IV Intro Analysis, Intro-Probability and Statistics, Theory of Probability, Theory of Statistics, Applied Numerical Methods I, Introduction to Data Handling, Regression and Time Series, History of Mathematics, Applied Numerical Methods II, Introductory Data Analysis, Nonparametric Statistics.',
+				resume: 'Resume'
+			},
+			methods: {
+				name: function() { 
+				
+				}
+			}
+		});
+	
+	</script>
